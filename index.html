@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeQuiz | Interactive Quiz App</title>
+  <meta name="description" content="A timed web development quiz with live score, streaks and answer review. Built with HTML, CSS and JavaScript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="logo" href="./" aria-label="CodeQuiz home">Code<span>Quiz</span></a>
+      <div class="hud" id="hud" hidden aria-label="Live stats">
+        <div class="chip"><small>Score</small><b id="hScore">0</b></div>
+        <div class="chip"><small>Streak</small><b id="hStreak">0</b></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+
+    <!-- START -->
+    <section id="screenStart" class="card" aria-labelledby="startTitle">
+      <p class="tag">Web dev practice</p>
+      <h1 id="startTitle" tabindex="-1">How well do you know the web?</h1>
+      <p class="lead">20 seconds per question. Faster correct answers earn bonus points, and streaks keep you going.</p>
+
+      <form id="setup">
+        <fieldset>
+          <legend>Pick a topic</legend>
+          <div class="options cols-4">
+            <label class="opt"><input type="radio" name="cat" value="html"><span><b>HTML</b><small>12 questions</small></span></label>
+            <label class="opt"><input type="radio" name="cat" value="css"><span><b>CSS</b><small>12 questions</small></span></label>
+            <label class="opt"><input type="radio" name="cat" value="js" checked><span><b>JavaScript</b><small>13 questions</small></span></label>
+            <label class="opt"><input type="radio" name="cat" value="mixed"><span><b>Mixed</b><small>All topics</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Length</legend>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="len" value="5"><span><b>Quick</b><small>5 questions</small></span></label>
+            <label class="opt"><input type="radio" name="len" value="10" checked><span><b>Full</b><small>10 questions</small></span></label>
+          </div>
+        </fieldset>
+        <p class="best" id="bestLine"></p>
+        <button class="btn primary big" type="submit">Start quiz →</button>
+      </form>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screenQuiz" class="card" hidden aria-labelledby="qText">
+      <div class="q-top">
+        <p class="counter" id="qCount">Question 1 of 10</p>
+        <div class="timer" id="timer" role="timer" aria-label="Time left">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="28"/><circle class="fg" id="ring" cx="32" cy="32" r="28"/></svg>
+          <span id="timeLeft">20</span>
+        </div>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+
+      <h2 id="qText" tabindex="-1"></h2>
+      <div class="answers" id="answers" role="group" aria-labelledby="qText"></div>
+      <p class="hintkeys">Tip: press 1–4 to answer</p>
+
+      <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+      <button class="btn primary" id="nextBtn" type="button" hidden>Next question →</button>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="card" hidden aria-labelledby="resTitle">
+      <p class="tag" id="resTag">Quiz complete</p>
+      <h1 id="resTitle" tabindex="-1"></h1>
+      <div class="ring-score"><b id="resPct">0%</b><small>accuracy</small></div>
+      <ul class="stats">
+        <li><b id="rScore">0</b><small>points</small></li>
+        <li><b id="rCorrect">0/0</b><small>correct</small></li>
+        <li><b id="rStreak">0</b><small>best streak</small></li>
+        <li><b id="rTime">0s</b><small>avg time</small></li>
+      </ul>
+      <p class="best" id="resBest"></p>
+      <div class="row">
+        <button class="btn primary" id="againBtn" type="button">Play again</button>
+        <button class="btn" id="menuBtn" type="button">Change topic</button>
+      </div>
+      <h2 class="review-h">Review your answers</h2>
+      <div id="review" class="review"></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap"><p>Built with HTML, CSS and JavaScript. Best scores are saved in your browser.</p></div></footer>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
