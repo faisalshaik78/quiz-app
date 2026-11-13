@@ -14,7 +14,7 @@ CodeQuiz is a browser-based quiz app for practising **HTML, CSS, and JavaScript*
 - **Result summary** — view accuracy, correct answers, points, best streak, and average answer time.
 - **Answer review** — revisit every question and see the correct answer and explanation.
 - **Personal bests** — best scores are saved in your browser with `localStorage`.
-- **Keyboard support** — use keys 1–4 to select an answer.
+- **Keyboard shortcuts** — use 1–4 to answer, N to move to the next question, and R to replay from the results screen.
 - **Responsive and accessible interface** — includes visible focus styles, live feedback, and reduced-motion support.
 
 ## Tech Stack
@@ -56,6 +56,16 @@ quiz-app/
 3. Select one of the four answer options before the 20-second timer ends.
 4. Earn points for correct answers and extra points for answering quickly.
 5. Continue through the quiz to see your final score and answer review.
+
+## Keyboard Shortcuts
+
+| Key | Action |
+| --- | --- |
+| `1`–`4` | Select an answer |
+| `N` | Move to the next question after answering |
+| `R` | Replay from the results screen |
+
+Keyboard shortcuts are ignored when a key is held down or combined with Ctrl, Alt, or Command.
 
 ## Scoring
 
