@@ -189,9 +189,22 @@ $('answers').addEventListener('click', e => {
   if (b) answer(+b.dataset.i);
 });
 document.addEventListener('keydown', e => {
-  if (screens.quiz.hidden || !game || game.answered) return;
-  const n = parseInt(e.key, 10);
-  if (n >= 1 && n <= game.qs[game.i].options.length) answer(n - 1);
+  if (e.repeat || e.altKey || e.ctrlKey || e.metaKey) return;
+
+  const key = e.key.toLowerCase();
+
+  if (!screens.quiz.hidden && game) {
+    if (!game.answered) {
+      const n = Number.parseInt(e.key, 10);
+      if (n >= 1 && n <= game.qs[game.i].options.length) answer(n - 1);
+      return;
+    }
+
+    if (key === 'n' && !$('nextBtn').hidden) $('nextBtn').click();
+    return;
+  }
+
+  if (!screens.result.hidden && key === 'r') $('againBtn').click();
 });
 $('nextBtn').addEventListener('click', () => {
   if (game.i === game.len - 1) return finish();
